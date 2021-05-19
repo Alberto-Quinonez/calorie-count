@@ -1,0 +1,16 @@
+.total-count-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.total-count-top {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+}
+
+.total-count-bottom {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+}
