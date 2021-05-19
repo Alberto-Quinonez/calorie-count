@@ -27,4 +27,18 @@ router.post('/', async (req, res, next) => {
     }
 });
 
+router.post('/delete', async (req, res, next) => {
+    try {
+        CalorieCountEntry.findById(req.body.id).then(entry => entry.deleteOne());
+        //const boolean = await calorieCountEntry.deleteOne();
+        res.json();
+    } catch (error) {
+        console.log(error.name);
+        if (error.name === 'ValidationError') {
+            res.statusCode = '422';
+        }
+        next(error);
+    }
+});
+
 module.exports = router;

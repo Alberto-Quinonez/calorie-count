@@ -25,12 +25,6 @@ app.use(helmet());
 app.use(cors({ origin: process.env.CORS_ORIGIN }));
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-//         res.json({
-//         message: 'nothing, try again',
-//     });
-// });
-
 app.use('/api/caloriesCountEntries', calorieCountEntriesApi);
 
 app.use(middlewares.notFound);
