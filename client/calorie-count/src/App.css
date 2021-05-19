@@ -1,0 +1,14 @@
+.calorie-count-app {
+    display: flex;
+    justify-content: center;
+}
+
+.calorie-count-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.add-calorie-btn {
+    
+}

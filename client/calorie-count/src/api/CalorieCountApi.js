@@ -15,3 +15,16 @@ export async function createCalorieCountEntry(entry) {
     });
     return response.json();
 }
+
+export async function deleteCalorieCountEntry(id) {
+    console.log(`val: deleted: ${id}`);
+
+    // const response = await fetch(`${API_URL}/api/caloriesCountEntries`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'content-type': 'application/json',
+    //     },
+    //     body: JSON.stringify(entry),
+    // });
+    // return response.json();
+}

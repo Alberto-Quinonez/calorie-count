@@ -1,0 +1,10 @@
+.entry-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 10%;
+}
+
+.text-field {
+    /* width: 10%; */
+}

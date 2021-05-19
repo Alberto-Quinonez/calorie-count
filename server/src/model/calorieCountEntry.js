@@ -9,15 +9,23 @@ const requiredNumber = {
     required: true,
 };
 
+const optionalNumber = {
+    type: Number,
+    required: false,
+};
+
 const calorieCountEntrySchema = new Schema({
-    protein: { 
+    calories: {
         ...requiredNumber
+    },
+    protein: { 
+        ...optionalNumber
     },
     carbohydrates: {
-        ...requiredNumber
+        ...optionalNumber
     },
     fat: {
-        ...requiredNumber
+        ...optionalNumber
     },
     date: {
         type: Date,
