@@ -3,7 +3,9 @@ import "./CalorieCountTotalView.css";
 import { Typography } from "@material-ui/core";
 
 export function CalorieCountTotal(entries) {
-  const total = entries.reduce((a, b) => a + (b["calories"] || 0), 0);
+  function totalSum(property) {
+    return entries.reduce((a, b) => a + (b[property] || 0), 0);
+  }
   const options = {
     weekday: "long",
     year: "numeric",
@@ -15,7 +17,9 @@ export function CalorieCountTotal(entries) {
   return (
     <div className="total-count-container">
       <Typography variant="h5" component="h3" className="total-count-top">
-        {`Calories: ${total}`}
+        {`Calories: ${totalSum("calories")}`}
+        <br></br>
+        {`Protein: ${totalSum("protein")}`}
       </Typography>
       <Typography className="total-count-bottom">{date}</Typography>
     </div>
