@@ -1,39 +1,10 @@
 import React, { useState, useReducer } from "react";
-import './CalorieCountEntryForm.css'
+import "./CalorieCountEntryForm.css";
 import { TextField, Button, Typography } from "@material-ui/core";
-
 
 import { createCalorieCountEntry } from "../api/CalorieCountApi";
 
 const CalorieCountEntryForm = ({ onClose }) => {
-  // const useStyles = makeStyles((theme) => ({
-  //   button: {
-  //     margin: theme.spacing(1),
-  //   },
-  //   leftIcon: {
-  //     marginRight: theme.spacing(1),
-  //   },
-  //   rightIcon: {
-  //     marginLeft: theme.spacing(1),
-  //   },
-  //   iconSmall: {
-  //     fontSize: 20,
-  //   },
-  //   root: {
-  //     padding: theme.spacing(3, 2),
-  //   },
-  //   container: {
-  //     display: "flex",
-  //     flexWrap: "wrap",
-  //   },
-  //   textField: {
-  //     marginLeft: theme.spacing(1),
-  //     marginRight: theme.spacing(1),
-  //     //width: 400,
-  //   },
-  // }));
-
-  //const classes = useStyles();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [formInput, setFormInput] = useReducer(
@@ -51,7 +22,7 @@ const CalorieCountEntryForm = ({ onClose }) => {
 
     const { calories, protein, carbohydrates, fat } = formInput;
 
-    let data = { calories, protein ,carbohydrates, fat };
+    let data = { calories, protein, carbohydrates, fat };
 
     setLoading(true);
     data.date = Date.now();
@@ -69,12 +40,12 @@ const CalorieCountEntryForm = ({ onClose }) => {
 
   const handleError = (error) => {
     const statusCode = error.statusCode;
-    if(statusCode === '422') {
-      return "Invalid Calorie entry"
+    if (statusCode === "422") {
+      return "Invalid Calorie entry";
     } else {
-      return "Unknown Error, good luck have fun"
+      return "Unknown Error, good luck have fun";
     }
-  }
+  };
 
   const handleInput = (evt) => {
     const name = evt.target.name;
@@ -85,21 +56,20 @@ const CalorieCountEntryForm = ({ onClose }) => {
   return (
     <div className="entry-form-container">
       <form onSubmit={handleSubmit} className="entry-form">
-        {
-          error &&
+        {error && (
           <Typography variant="h5" component="h3">
-          {error}
+            {error}
           </Typography>
-        }
+        )}
         <TextField
           label="Calories"
           id="margin-normal"
           name="calories"
           type="number"
           defaultValue={formInput.calories}
-          className={'text-field'}
+          className={"text-field"}
           onChange={handleInput}
-          variant={'filled'}
+          variant={"filled"}
           required
         />
         <TextField
@@ -108,9 +78,9 @@ const CalorieCountEntryForm = ({ onClose }) => {
           name="protein"
           type="number"
           defaultValue={formInput.protein}
-          className={'text-field'}
+          className={"text-field"}
           onChange={handleInput}
-          variant={'filled'}
+          variant={"filled"}
         />
         <TextField
           label="Carbohydrates"
@@ -118,9 +88,9 @@ const CalorieCountEntryForm = ({ onClose }) => {
           name="carbohydrates"
           type="number"
           defaultValue={formInput.carbohydrates}
-          className={'text-field'}
+          className={"text-field"}
           onChange={handleInput}
-          variant={'filled'}
+          variant={"filled"}
         />
         <TextField
           label="Fat"
@@ -128,18 +98,18 @@ const CalorieCountEntryForm = ({ onClose }) => {
           name="fat"
           type="number"
           defaultValue={formInput.fat}
-          className={'text-field'}
+          className={"text-field"}
           onChange={handleInput}
-          variant={'filled'}
+          variant={"filled"}
         />
         <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            disabled={loading}
-          >
-            {loading ? "Loading..." : "Add Entry"}
-          </Button>
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Add Entry"}
+        </Button>
       </form>
     </div>
   );
