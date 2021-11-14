@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { listCalorieCountEntries, deleteCalorieCountEntry } from "./api/CalorieCountApi";
+import {
+  listCalorieCountEntries,
+  deleteCalorieCountEntry,
+} from "./api/CalorieCountApi";
 import { Button } from "@material-ui/core";
 import Popper from "@material-ui/core/Popper";
-import Divider from '@material-ui/core/Divider';
+import Divider from "@material-ui/core/Divider";
 import CalorieCountEntriesList from "./components/CalorieCountEntriesView";
 import CalorieCountTotal from "./components/CalorieCountTotalView";
 import CalorieCountEntryForm from "./forms/CalorieCountEntryForm";
@@ -19,18 +22,21 @@ const App = () => {
     setCalorieCountEntries(calorieCountEntries);
   };
 
+  const getCaloriesCountPromise = () => {
+    listCalorieCountEntries().then((calorieCountEntries) =>
+      setCalorieCountEntries(calorieCountEntries)
+    );
+  };
+
   const handleDelete = (id) => {
     console.log(`event ${id}`);
     //deleteCalorieCountEntry
-  }
+  };
 
-  useEffect(
-    () => {
-      getCalorieCountEntries();
-    },
-    []
-  );
-  
+  useEffect(() => {
+    getCaloriesCountPromise();
+  }, []);
+
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
